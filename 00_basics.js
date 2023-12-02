@@ -19,8 +19,19 @@ async function chat(input) {
   return response.choices[0].message.content;
 }
 
-const question = "What is the capital of Korea";
+const question = "What is the capital of South Korea?";
 
 chat(question)
+  .then((response) => console.log(response))
+  .catch((error) => console.log(error));
+
+const promptTemplete = `
+  Be very funny when answering questions
+  Question: {question}
+  `;
+
+const prompt = promptTemplete.replace("{question}", question);
+
+chat(prompt)
   .then((response) => console.log(response))
   .catch((error) => console.log(error));
